@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="false"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit" 
+             xmlns:controls="clr-namespace:ToDoApp.Controls"
+             xmlns:fragments="clr-namespace:ToDoApp.Pages.Fragments" 
+             x:Class="ToDoApp.Pages.SignupPage">
+
+        <Grid RowDefinitions="60,*,Auto"
+              RowSpacing="0"
+              VerticalOptions="FillAndExpand"
+              HorizontalOptions="FillAndExpand">
+        
+            <!--#region Custom navigation bar-->
+            <controls:CustomNavigationBar Grid.Row="0"
+                                          Title="{xct:Translate NavigationBarHeader_SignupPage}"
+                                          NavigateBackCommand="{Binding NavigateBackCommand}"/>
+            <!--#endregion-->
+
+            <!--#region Registration-->
+            <StackLayout Grid.Row="1"
+                         Margin="0,12,0,0"
+                         xct:StateLayout.CurrentState="{Binding MainState}"
+                         xct:StateLayout.AnimateStateChanges="True">
+
+                <xct:StateLayout.StateViews>
+                    <xct:StateView StateKey="Loading"
+                                   VerticalOptions="FillAndExpand">
+                        <fragments:LoadingView></fragments:LoadingView>
+                    </xct:StateView>
+                </xct:StateLayout.StateViews>
+
+                <!--User name-->
+                <StackLayout Style="{StaticResource AuthDataStackLayoutStyle}">
+                    <Label Text="{xct:Translate UserName}"
+                           Style="{StaticResource EntryHeaderLabelStyle}"/>
+                    <Frame x:Name="UserNameFrame"
+                           Style="{StaticResource FrameEntryStyle}">
+                        <Entry Placeholder="{xct:Translate PlaceholderText_EnterUserName}"
+                               Text="{Binding UserName.Value}"
+                               Style="{StaticResource BaseEntryStyle}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <VisualState.StateTriggers>
+                                        </VisualState.StateTriggers>
+                                    </VisualState>
+                                    <VisualState x:Name="Focused">
+                                        <VisualState.Setters>
+                                        <Setter TargetName="UserNameFrame" Property="Frame.BorderColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryColor}, Dark={StaticResource ButtonTextColor}}" />
+                                            <Setter TargetName="UserNameFrame" Property="Frame.CornerRadius" Value="0" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Entry.Effects>
+                                <xct:RemoveBorderEffect/>
+                            </Entry.Effects>
+                        </Entry>
+                    </Frame>
+                    <Label IsVisible="{Binding UserName.IsValid, Converter={xct:InvertedBoolConverter}}"
+                           Text="{Binding UserName.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                           TextColor="{StaticResource FailColor}" />
+                </StackLayout>
+            
+                <!--Email-->
+                <StackLayout Style="{StaticResource AuthDataStackLayoutStyle}">
+                    <Label Text="Email"
+                           Style="{StaticResource EntryHeaderLabelStyle}"/>
+                    <Frame x:Name="EmailFrame"
+                           Style="{StaticResource FrameEntryStyle}">
+                    <Entry Placeholder="{xct:Translate PlaceholderText_EnterYourEmail}"
+                           Text="{Binding Email.Value}"
+                           Style="{StaticResource BaseEntryStyle}">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <VisualState.StateTriggers>
+                                    </VisualState.StateTriggers>
+                                </VisualState>
+                                <VisualState x:Name="Focused">
+                                    <VisualState.Setters>
+                                        <Setter TargetName="EmailFrame" Property="Frame.BorderColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryColor}, Dark={StaticResource ButtonTextColor}}" />
+                                        <Setter TargetName="EmailFrame" Property="Frame.CornerRadius" Value="0" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Entry.Effects>
+                            <xct:RemoveBorderEffect/>
+                        </Entry.Effects>
+                        </Entry>
+                    </Frame>
+                    <Label IsVisible="{Binding Email.IsValid, Converter={xct:InvertedBoolConverter}}"
+                           Text="{Binding Email.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                           TextColor="{StaticResource FailColor}" />
+                </StackLayout>
+            
+                <!--Password-->
+                <StackLayout Style="{StaticResource AuthDataStackLayoutStyle}">
+                    <Label Text="{xct:Translate Password}"
+                           Style="{StaticResource EntryHeaderLabelStyle}"/>
+                    <Frame x:Name="PasswordFrame"
+                                   Style="{StaticResource FrameEntryStyle}">
+                        <Entry IsPassword="True"
+                               Placeholder="{xct:Translate PlaceholderText_EnterYourPassword}"
+                               Text="{Binding Password.Item1.Value}"
+                               Style="{StaticResource BaseEntryStyle}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <VisualState.StateTriggers>
+                                        </VisualState.StateTriggers>
+                                    </VisualState>
+                                    <VisualState x:Name="Focused">
+                                        <VisualState.Setters>
+                                        <Setter TargetName="PasswordFrame" Property="Frame.BorderColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryColor}, Dark={StaticResource ButtonTextColor}}" />
+                                            <Setter TargetName="PasswordFrame" Property="Frame.CornerRadius" Value="0" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>                            
+                            <Entry.Effects>
+                                <xct:RemoveBorderEffect/>
+                            </Entry.Effects>
+                        </Entry>
+                    </Frame>
+                    <Label IsVisible="{Binding Password.Item1.IsValid, Converter={xct:InvertedBoolConverter}}"
+                           Text="{Binding Password.Item1.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                           TextColor="{StaticResource FailColor}" />
+                </StackLayout>
+            
+                <!--Confirm password-->
+                <StackLayout Style="{StaticResource AuthDataStackLayoutStyle}">
+                    <Label Text="{xct:Translate ConfirmPassword}"
+                           Style="{StaticResource EntryHeaderLabelStyle}"/>
+                    <Frame x:Name="ConfirmPasswordFrame"
+                           Style="{StaticResource FrameEntryStyle}">
+                        <Entry IsPassword="True"
+                               Placeholder="{xct:Translate PlaceholderText_ConfirmYourPassword}"
+                               ReturnCommand="{Binding SignUpCommand}"
+                               Text="{Binding Password.Item2.Value}"
+                               Style="{StaticResource BaseEntryStyle}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <VisualState.StateTriggers>
+                                        </VisualState.StateTriggers>
+                                    </VisualState>
+                                    <VisualState x:Name="Focused">
+                                        <VisualState.Setters>
+                                        <Setter TargetName="ConfirmPasswordFrame" Property="Frame.BorderColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryColor}, Dark={StaticResource ButtonTextColor}}" />
+                                            <Setter TargetName="ConfirmPasswordFrame" Property="Frame.CornerRadius" Value="0" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Entry.Effects>
+                                <xct:RemoveBorderEffect/>
+                            </Entry.Effects>
+                        </Entry>
+                    </Frame>
+                    <Label IsVisible="{Binding Password.Item2.IsValid, Converter={xct:InvertedBoolConverter}}"
+                           Text="{Binding Password.Item2.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                           TextColor="{StaticResource FailColor}" />
+                </StackLayout>
+            
+            </StackLayout>
+
+        <StackLayout Orientation="Vertical"
+                     Grid.Row="2">
+
+            <!--SignUp button-->
+            <Button Command="{Binding SignUpCommand}"
+                    Margin="20,12,20,14"
+                    Text="{xct:Translate Register}"
+                    Style="{StaticResource BaseButtonStyle}"
+                    Visual="Material"
+                    xct:ShadowEffect.Color="{AppThemeBinding Light={StaticResource LightPrimaryColor}, Dark={StaticResource DarkButtonBackgroundColor}}"
+                    xct:ShadowEffect.Radius="12"
+                    xct:ShadowEffect.OffsetX="4"
+                    xct:ShadowEffect.OffsetY="8"
+                    xct:TouchEffect.NativeAnimation="True"/>
+
+            <Label HorizontalTextAlignment="Center"
+                   Margin="20,0,20,30"
+                   TextColor="{AppThemeBinding Light={StaticResource DarkPrimaryColor}, Dark={StaticResource DarkPrimaryTextColor}}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span
+                            Text="{xct:Translate AlreadyHaveAnAccount}"
+                            Style="{StaticResource Body1_MulishRegular}"/>
+                        <Span
+                            Text="{xct:Translate LoginBtnText}"
+                            Style="{StaticResource BaseLink}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToLoginPageCommand}" NumberOfTapsRequired="1"></TapGestureRecognizer>
+                </Label.GestureRecognizers>
+            </Label>
+
+        </StackLayout>
+        <!--#endregion-->
+            
+    </Grid>
+
+</ContentPage>

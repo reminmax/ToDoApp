@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="false"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             xmlns:controls="clr-namespace:ToDoApp.Controls"
+             xmlns:helpers="clr-namespace:ToDoApp.Helpers" 
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="ToDoApp.Pages.UserProfilePage">
+    
+    <ContentPage.Content>
+
+        <Grid ColumnDefinitions="*,*"
+              RowDefinitions="60,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+              VerticalOptions="FillAndExpand"
+              HorizontalOptions="FillAndExpand"
+              Margin="20,0,20,0">
+
+            <!--Custom navigation bar-->
+            <controls:CustomNavigationBar Grid.Row="0"
+                                          Grid.ColumnSpan="2"
+                                          Margin="0,0,0,16"
+                                          Title="{xct:Translate NavigationBarHeader_UserProfilePage}"
+                                          NavigateBackCommand="{Binding NavigateBackCommand}"/>
+            <!--User image-->
+            <Image Source="user.png"
+                   Grid.Row="1"
+                   Grid.ColumnSpan="2"
+                   Aspect="AspectFit"
+                   VerticalOptions="Start" 
+                   HorizontalOptions="CenterAndExpand"
+                   HeightRequest="100"/>
+
+            <!--User name-->
+            <Label Text="{Binding UserName}"
+                   Grid.Row="2"
+                   Grid.ColumnSpan="2"
+                   VerticalOptions="Start"
+                   HorizontalOptions="Center"
+                   TextColor="#272727"
+                   FontFamily="OpenSansSemiBold"
+                   Margin="0,0,0,10"
+                   FontSize="20"/>
+
+            <!--Task statistics-->
+            <Frame BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"
+                   BorderColor="{AppThemeBinding Light={StaticResource LightEntryBorderColor}, Dark={StaticResource DarkEntryBorderColor}}"
+                   Padding="8"
+                   Grid.Row="3"
+                   Grid.Column="0"
+                   Margin="10,0,10,0">
+                <StackLayout Spacing="0">
+                    <Label Text="{Binding ProfileDetails.TotalTasks}"
+                           TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
+                           FontSize="18"
+                           FontFamily="OpenSansSemiBold"
+                           HorizontalOptions="Center"/>
+                    <Label Text="{xct:Translate TotalTasks}"
+                           TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
+                           FontSize="12"
+                           FontFamily="OpenSansRegular"
+                           HorizontalOptions="Center"/>
+                </StackLayout>
+            </Frame>
+
+            <Frame BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"
+                   BorderColor="{AppThemeBinding Light={StaticResource LightEntryBorderColor}, Dark={StaticResource DarkEntryBorderColor}}"
+                   Padding="8"
+                   Grid.Row="3"
+                   Grid.Column="1"
+                   Margin="10,0,10,0">
+                <StackLayout Spacing="0">
+                    <Label Text="{Binding ProfileDetails.DoneTasks}"
+                           TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
+                           FontSize="18"
+                           FontFamily="OpenSansSemiBold"
+                           HorizontalOptions="Center"/>
+                    <Label Text="{xct:Translate CompletedTasks}"
+                           TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
+                           FontSize="12"
+                           FontFamily="OpenSansRegular"
+                           HorizontalOptions="Center"/>
+                </StackLayout>
+            </Frame>
+
+            <!--#region App settings -->
+
+            <!--App theme-->
+            <controls:SettingsMenuItem Grid.Row="4"
+                                       Grid.ColumnSpan="2"
+                                       Icon="{x:Static helpers:FontAwesomeIcons.PaintBrush}"
+                                       Title="{xct:Translate ApplyDarkMode}">
+                <controls:SettingsMenuItem.Content>
+                    <Switch IsToggled="{Binding IsDarkModeEnabled, Mode=TwoWay}">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="On">
+                                    <VisualState.Setters>
+                                        <Setter Property="ThumbColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryColor}, Dark={StaticResource DarkPrimaryColor}}" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Off">
+                                    <VisualState.Setters>
+                                        <Setter Property="ThumbColor" Value="{AppThemeBinding Light={StaticResource LightSecondaryColor}, Dark={StaticResource DarkSecondaryColor}}" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Switch>
+                </controls:SettingsMenuItem.Content>
+            </controls:SettingsMenuItem>
+
+            <!--Language-->
+            <controls:SettingsMenuItem Grid.Row="5"
+                                       Grid.ColumnSpan="2"
+                                       Icon="{x:Static helpers:FontAwesomeIcons.Globe}"
+                                       Title="{xct:Translate Language}">
+                <controls:SettingsMenuItem.Content>
+                    <Picker ItemsSource="{Binding SupportedLanguages}"
+                            ItemDisplayBinding="{Binding Name}"
+                            SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}"
+                            FontSize="16"
+                            VerticalOptions="Start"
+                            TextColor="{AppThemeBinding Light={StaticResource DarkPrimaryColor}, Dark={StaticResource DarkPrimaryTextColor}}">
+                        <Picker.Effects>
+                            <xct:RemoveBorderEffect/>
+                        </Picker.Effects>
+                    </Picker>
+                </controls:SettingsMenuItem.Content>
+            </controls:SettingsMenuItem>
+
+            <!--Hide completed tasks-->
+            <controls:SettingsMenuItem Grid.Row="6"
+                                       Grid.ColumnSpan="2"
+                                       Icon="{x:Static helpers:FontAwesomeIcons.Tasks}"
+                                       Title="{xct:Translate HideCompletedTasks}">
+                <controls:SettingsMenuItem.Content>
+                    <Switch IsToggled="{Binding IsHidingDoneTasksEnabled, Mode=TwoWay}">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="On">
+                                    <VisualState.Setters>
+                                        <Setter Property="ThumbColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryColor}, Dark={StaticResource DarkPrimaryColor}}" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Off">
+                                    <VisualState.Setters>
+                                        <Setter Property="ThumbColor" Value="{AppThemeBinding Light={StaticResource LightSecondaryColor}, Dark={StaticResource DarkSecondaryColor}}" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Switch>
+
+                </controls:SettingsMenuItem.Content>
+            </controls:SettingsMenuItem>
+            <!--#endregion-->
+
+            <!--Log out-->
+            <StackLayout Orientation="Horizontal"
+                         Grid.Row="7"
+                         Grid.ColumnSpan="2"
+                         Margin="0,22,0,0">
+                <Label Text="{x:Static helpers:FontAwesomeIcons.ArrowAltRight}"
+                       TextColor="{AppThemeBinding Light={StaticResource LightPrimaryColor}, Dark={StaticResource DarkSecondaryTextColor}}"
+                       FontSize="22"
+                       FontFamily="FontAwesomeSolid"
+                       Margin="10,0,0,0"
+                       VerticalOptions="Center"/>
+                <Label Text="{xct:Translate LogOut}"
+                       Margin="8,0,0,0"
+                       TextColor="{AppThemeBinding Light={StaticResource DarkPrimaryColor}, Dark={StaticResource LightPageBackgroundColor}}"
+                       FontSize="18"
+                       FontFamily="OpenSansSemiBold"
+                       VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding LogoutCommand}" NumberOfTapsRequired="1"/>
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding LogoutCommand}" NumberOfTapsRequired="1"/>
+                </StackLayout.GestureRecognizers>
+                
+            </StackLayout>
+
+        </Grid>
+
+    </ContentPage.Content>
+    
+</ContentPage>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ToDoApp.Controls.CustomNavigationBar">
+    
+    <ContentView.ControlTemplate>
+        <ControlTemplate>
+            <Frame CornerRadius="0"
+                   BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}"
+                   HasShadow="False"
+                   HorizontalOptions="FillAndExpand">
+                <Grid ColumnDefinitions="Auto,*">
+
+                    <!--Navigate back icon-->
+                    <Label Style="{StaticResource NavigationBarIcon}"
+                           VerticalOptions="Center"
+                           HorizontalOptions="End"
+                           Grid.Column="0">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{TemplateBinding NavigateBackCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                    <!--Page title-->
+                    <Label Text="{TemplateBinding Title}" 
+                           VerticalOptions="Center"
+                           Grid.Column="1"    
+                           Style="{StaticResource NavigationBarHeaderStyle}" 
+                           Margin="20,0,0,0" />
+                </Grid>
+            </Frame>
+        </ControlTemplate>
+    </ContentView.ControlTemplate>
+</ContentView>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="false"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             x:Class="ToDoApp.Pages.ErrorPage">
+    
+    <ContentPage.Content>
+
+        <Grid RowDefinitions="*,Auto"
+              RowSpacing="0"
+              Margin="15,0,15,0">
+
+            <Image Grid.Row="0"
+                   Aspect="AspectFit"
+                   Source="error.png"/>
+            <StackLayout Grid.Row="1">
+                <Label HorizontalTextAlignment="Center"
+                       Margin="30, 20, 30, 10"
+                       Text="Error"
+                       Style="{StaticResource Headline4_MulishBlack}"/>
+                <Label HorizontalTextAlignment="Center"
+                       Margin="0, 0, 0, 30"
+                       Style="{StaticResource Body1_MulishRegular}"
+                       Text="Something went wrong! Please wait few moments and try again."
+                       TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"/>
+                <Button Text="Try again"
+                        Style="{StaticResource BaseButtonStyle}"
+                        Command="{Binding NavigateBackCommand}"
+                        Margin="0, 20, 0, 25"/>
+            </StackLayout>
+            
+        </Grid>
+        
+    </ContentPage.Content>
+    
+</ContentPage>

@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:styles="clr-namespace:ToDoApp.Styles"
+                    xmlns:helpers="clr-namespace:ToDoApp.Helpers"
+                    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+                    x:Class="ToDoApp.Styles.Theme">
+
+    <ResourceDictionary.MergedDictionaries>
+        <styles:Colors></styles:Colors>
+        <styles:Fonts></styles:Fonts>
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--Frame CornerRadius-->
+    <OnPlatform x:TypeArguments="x:Single" x:Key="FrameCornerRadius">
+        <On Platform="Android" Value="18" />
+        <On Platform="iOS" Value="24" />
+    </OnPlatform>
+
+    <!--#region Labels-->
+    <Style x:Key="HeadlineStyle" TargetType="Label">
+        <Setter Property="FontFamily" Value="OpenSansSemiBold" />
+        <Setter Property="FontSize" Value="{StaticResource HeadlineFontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource DarkPrimaryColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+    </Style>
+
+    <Style x:Key="NavigationBarHeaderStyle" TargetType="Label">
+        <Setter Property="FontFamily" Value="OpenSansSemiBold" />
+        <Setter Property="FontSize" Value="{StaticResource NavigationBarFontSize}" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource DarkPrimaryColor}, Dark={StaticResource LightPageBackgroundColor}}" />
+    </Style>
+
+    <Style x:Key="NavigationBarIcon" TargetType="Label">
+        <Setter Property="Text" Value="{x:Static helpers:FontAwesomeIcons.ChevronLeft}" />
+        <Setter Property="Margin" Value="14,0,0,0" />
+        <Setter Property="FontFamily" Value="FontAwesomeRegular" />
+        <Setter Property="FontSize" Value="{StaticResource NavigationBarIconFontSize}" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource DarkPrimaryColor}, Dark={StaticResource LightPageBackgroundColor}}" />
+    </Style>
+
+    <Style x:Key="WelcomePageHeadlineStyle" TargetType="Label">
+        <Setter Property="FontFamily" Value="OpenSansSemiBold" />
+        <Setter Property="FontSize" Value="{StaticResource Headline4FontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource DarkPrimaryColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+    </Style>
+
+    <Style x:Key="Headline4_MulishBlack" TargetType="Label">
+        <Setter Property="FontFamily" Value="OpenSansBold" />
+        <Setter Property="FontSize" Value="{StaticResource Headline4FontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource DarkPrimaryColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+    </Style>
+
+    <Style x:Key="Subtitle1_MulishBlack" TargetType="Label">
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+        <Setter Property="FontSize" Value="{StaticResource Subtitle1FontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource DarkPrimaryColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+    </Style>
+
+    <Style x:Key="EntryHeaderLabelStyle" TargetType="Label">
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+        <Setter Property="Margin" Value="0,0,0,4" />
+        <Setter Property="FontSize" Value="{StaticResource Body1FontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource DarkPrimaryColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+    </Style>
+
+    <Style x:Key="Body1_MulishSemiBold" TargetType="Label">
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+        <Setter Property="FontSize" Value="{StaticResource Body1FontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource DarkPrimaryColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+    </Style>
+
+    <Style x:Key="Body1_MulishRegular" TargetType="Label">
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+        <Setter Property="FontSize" Value="{StaticResource Body1FontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource DarkPrimaryColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+    </Style>
+
+    <Style x:Key="BaseLink" TargetType="Label">
+        <Setter Property="FontFamily" Value="OpenSansBold" />
+        <Setter Property="TextDecorations" Value="Underline" />
+        <Setter Property="FontSize" Value="{StaticResource Body1FontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource DarkPrimaryColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+    </Style>
+
+    <Style x:Key="Subtitle1_MulishRegular" TargetType="Label">
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+        <Setter Property="FontSize" Value="{StaticResource Subtitle1FontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource DarkPrimaryColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+    </Style>
+    <!--#endregion-->
+
+    <!--#region StackLayouts-->
+    <Style x:Key="EntryDataStackLayoutStyle" TargetType="StackLayout">
+        <Setter Property="Margin" Value="24,0,24,6" />
+        <Setter Property="Spacing" Value="2" />
+    </Style>
+    <Style x:Key="AuthDataStackLayoutStyle" TargetType="StackLayout">
+        <Setter Property="Margin" Value="20,0,20,0" />
+        <Setter Property="Spacing" Value="5" />
+    </Style>
+    <!--#endregion-->
+
+    <!--#region Frames-->
+    <Style x:Key="FrameEntryStyle" TargetType="Frame">
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="HasShadow" Value="False" />
+        <Setter Property="Padding" Value="10, 0" />
+        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource LightEntryBorderColor}, Dark={StaticResource DarkEntryBorderColor}}" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkEntryBackgroundColor}}" />
+    </Style>
+    <!--#endregion-->
+
+    <!--#region Pickers-->
+    <Style x:Key="BaseDatePickerStyle" TargetType="DatePicker">
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+        <Setter Property="FontSize" Value="{StaticResource EntryFontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource DarkPrimaryColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+    </Style>
+    <Style x:Key="BaseTimePickerStyle" TargetType="TimePicker">
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+        <Setter Property="FontSize" Value="{StaticResource EntryFontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource DarkPrimaryColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+    </Style>
+    <!--#endregion-->
+
+    <!--#region Entry-->
+    <Style x:Key="BaseEntryStyle" TargetType="Entry">
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+        <Setter Property="FontSize" Value="{StaticResource EntryFontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource DarkPrimaryColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+        <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light={StaticResource LightPlaceholderTextColor}, Dark={StaticResource DarkPlaceholderTextColor}}" />
+    </Style>
+
+    <Style x:Key="InvalidEntryStyle" TargetType="Entry">
+        <Setter Property="FontFamily" Value="OpenSansBold" />
+        <Setter Property="TextColor" Value="{StaticResource FailColor}" />
+        <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light={StaticResource LightPlaceholderTextColor}, Dark={StaticResource DarkPlaceholderTextColor}}" />
+    </Style>
+    <!--#endregion-->
+
+    <!--#region Editor-->
+    <Style x:Key="BaseEditorStyle" TargetType="Editor">
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+        <Setter Property="FontSize" Value="{StaticResource EntryFontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource DarkPrimaryColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+        <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light={StaticResource LightPlaceholderTextColor}, Dark={StaticResource DarkPlaceholderTextColor}}" />
+        <Setter Property="HeightRequest" Value="120" />
+    </Style>
+    <!--#endregion-->
+    
+    <!--#region Buttons-->
+    <Style x:Key="BaseButtonStyle" TargetType="Button">
+        <Setter Property="CornerRadius" Value="12" />
+        <Setter Property="TextTransform" Value="None" />
+        <Setter Property="HeightRequest" Value="50" />
+        <Setter Property="FontFamily" Value="OpenSansSemiBold" />
+        <Setter Property="Padding" Value="14" />
+        <Setter Property="FontSize" Value="{StaticResource ButtonFontSize}" />
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="{StaticResource LightPrimaryColor}" />
+                            <Setter Property="TextColor" Value="{StaticResource ButtonTextColor}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightCardDisabledBackgroundColor}, Dark={StaticResource DarkCardDoneBackgroundColor}}" />
+                            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+    <!--#endregion-->
+
+    <!--#region Implicit styles -->
+    <Style TargetType="Frame">
+        <Setter Property="CornerRadius" Value="{StaticResource FrameCornerRadius}" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="HasShadow" Value="False" />
+        <Setter Property="BorderColor" Value="Transparent" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+    </Style>
+
+    <Style TargetType="Grid">
+        <Setter Property="RowSpacing" Value="0" />
+        <Setter Property="ColumnSpacing" Value="0" />
+    </Style>
+
+    <Style TargetType="Switch">
+        <Setter Property="OnColor" Value="#AAAAAA" />
+    </Style>
+
+    <Style ApplyToDerivedTypes="True" TargetType="ContentPage">
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}" />
+        <Setter Property="xct:StatusBarEffect.Color" Value="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}" />
+        <!--<Setter Property="ios:Page.UseSafeArea" Value="False" />
+        <Setter Property="NavigationPage.BackButtonTitle" Value="" />
+        <Setter Property="xct:StatusBarEffect.Color" Value="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}" />
+        <Setter Property="xct:StatusBarEffect.Style" Value="DarkContent" />
+        <Setter Property="droid:NavigationBarEffect.Color" Value="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}" />
+        <Setter Property="droid:NavigationBarEffect.Style" Value="LightContent" />-->
+    </Style>
+    <!--#endregion-->
+
+</ResourceDictionary>

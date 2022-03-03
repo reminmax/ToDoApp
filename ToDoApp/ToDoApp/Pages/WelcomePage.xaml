@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="false"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit" 
+             xmlns:helpers="clr-namespace:ToDoApp.Helpers"
+             BackgroundColor="{StaticResource LightPageBackgroundColor}"
+             x:Class="ToDoApp.Pages.WelcomePage">
+
+    <ContentPage.Content>
+
+        <Grid RowDefinitions="8*,2*">
+
+            <Grid RowDefinitions="*,70">
+
+                <!--#region CarouselView-->
+                <CarouselView x:Name="CarouselView"
+                    Grid.Row="0"
+                              Margin="20,20,20,0"
+                              IndicatorView="IndicatorView"
+                              ItemsSource="{Binding WelcomePageSlideList}"
+                              HorizontalScrollBarVisibility="Never"
+                              VerticalOptions="Start">
+                    <CarouselView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal" 
+                                            SnapPointsType="MandatorySingle"
+                                            SnapPointsAlignment="Center"/>
+                    </CarouselView.ItemsLayout>
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid RowDefinitions="*,Auto,Auto">
+
+                                <!--Image-->
+                                <Image Source="{Binding ImageSource}"
+                                        Grid.Row="0"
+                                        Aspect="AspectFit"
+                                        VerticalOptions="StartAndExpand" />
+
+                                <!--Header-->
+                                <Label Text="{Binding Header}"
+                                        Grid.Row="1"
+                                        TextColor="Black"
+                                        FontFamily="OpenSansBold"
+                                        FontSize="24"
+                                        Margin="0,12,0,0"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="End"/>
+
+                                <!--Description-->
+                                <Label Text="{Binding Description}"
+                                        Grid.Row="2"
+                                        Margin="30,10,30,18"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalOptions="Center"
+                                        FontFamily="OpenSansRegular"
+                                        FontSize="14"/>
+                            </Grid>
+
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+                <!--#endregion-->
+
+                <!--IndicatorView-->
+                <IndicatorView x:Name="IndicatorView"
+                                Grid.Row="1"
+                                IndicatorSize="10"
+                                IndicatorColor="{StaticResource LightSecondaryColor}"
+                                SelectedIndicatorColor="{StaticResource LightPrimaryColor}"
+                                VerticalOptions="Start"
+                                HorizontalOptions="Center"/>
+            </Grid>
+                
+            <!--Next button-->
+            <Button Grid.Row="0"
+                    Clicked="GoToNextSlide"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource LightSecondaryColor}, Dark={StaticResource DarkSecondaryColor}}"
+                    TranslationY="25" 
+                    CornerRadius="50"
+                    WidthRequest="56"
+                    HeightRequest="56"                    
+                    VerticalOptions="End" 
+                    HorizontalOptions="Center"
+                    Visual="Material"
+                    xct:ShadowEffect.Color="{AppThemeBinding Light={StaticResource LightPrimaryColor}, Dark={StaticResource DarkButtonBackgroundColor}}"
+                    xct:ShadowEffect.Radius="14"
+                    xct:ShadowEffect.OffsetX="2"
+                    xct:ShadowEffect.OffsetY="8"
+                    xct:TouchEffect.NativeAnimation="True">
+                    <Button.ImageSource>
+                        <FontImageSource Glyph="{x:Static helpers:FontAwesomeIcons.ArrowRight}"
+                                         Color="{AppThemeBinding Light={StaticResource LightPrimaryColor}, Dark={StaticResource DarkPrimaryColor}}"
+                                         FontFamily="FontAwesomeLight"
+                                         Size="30" />
+                    </Button.ImageSource>
+                </Button>
+
+            <!--Get started button-->
+            <Button Grid.Row="1"
+                    Text="{xct:Translate GetStarted}"
+                    Command="{Binding GetStartedCommand}"
+                    Margin="20,0,20,18"
+                    Style="{StaticResource BaseButtonStyle}"
+                    VerticalOptions="End"
+                    Visual="Material"
+                    xct:ShadowEffect.Color="{AppThemeBinding Light={StaticResource LightPrimaryColor}, Dark={StaticResource DarkButtonBackgroundColor}}"
+                    xct:ShadowEffect.Radius="12"
+                    xct:ShadowEffect.OffsetX="4"
+                    xct:ShadowEffect.OffsetY="8"
+                    xct:TouchEffect.NativeAnimation="True"/>
+
+        </Grid>
+
+    </ContentPage.Content>
+    
+</ContentPage>

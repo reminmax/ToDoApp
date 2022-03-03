@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="false"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="ToDoApp.Pages.NoConnectionPage">
+    
+    <ContentPage.Content>
+
+        <StackLayout Orientation="Vertical"
+                     VerticalOptions="Center" 
+                     HorizontalOptions="FillAndExpand">
+
+            <Image Source="no_connection.png"
+                   HorizontalOptions="Center"
+                   HeightRequest="120"
+                   Margin="0,0,0,50"
+                   Aspect="AspectFit"/>
+
+            <Label Text="{xct:Translate InternetConnectionLost}"
+                   FontFamily="OpenSansBold"
+                   TextColor="{AppThemeBinding Light={StaticResource DarkPrimaryColor}, Dark={StaticResource DarkPrimaryTextColor}}"
+                   FontSize="Medium"
+                   VerticalOptions="Center" 
+                   LineBreakMode="WordWrap"
+                   HorizontalOptions="Center" />
+            <Label Text="{xct:Translate WaitingForConnection}"
+                   FontFamily="OpenSansRegular"
+                   FontSize="Small"
+                   TextColor="{AppThemeBinding Light={StaticResource DarkPrimaryColor}, Dark={StaticResource DarkPrimaryTextColor}}"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center" />
+
+            <ActivityIndicator IsRunning="True" 
+                               HeightRequest="60"
+                               Margin="0,12,0,0"
+                               Color="Orange" 
+                               HorizontalOptions="Center" 
+                               VerticalOptions="Center" />
+
+        </StackLayout>
+        
+    </ContentPage.Content>
+    
+</ContentPage>

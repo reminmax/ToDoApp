@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helpers="clr-namespace:ToDoApp.Helpers" 
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="ToDoApp.Controls.SettingsMenuItem">
+
+    <ContentView.ControlTemplate>
+        <ControlTemplate>
+
+            <Frame BorderColor="{AppThemeBinding Light={StaticResource LightEntryBorderColor}, Dark={StaticResource DarkEntryBorderColor}}"
+                   BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"
+                   Padding="10"
+                   Margin="2,6,2,0">
+
+                <Grid RowDefinitions="Auto,Auto"
+                      ColumnDefinitions="Auto,*,Auto">
+
+                    <!--Icon-->
+                    <Label Text="{TemplateBinding Icon}"
+                           Grid.Column="0"
+                           Grid.RowSpan="2"
+                           TextColor="{AppThemeBinding Light={StaticResource LightPrimaryColor}, Dark={StaticResource DarkPrimaryTextColor}}"
+                           FontSize="24"
+                           FontFamily="FontAwesomeSolid"
+                           Margin="10,0,0,0"
+                           VerticalOptions="Center"/>
+                    <!--Title-->
+                    <Label Text="{TemplateBinding Title}"
+                           Grid.Column="1"
+                           Grid.Row="0"
+                           TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
+                           FontSize="11"
+                           FontFamily="OpenSansRegular"
+                           Margin="16,4,0,4"
+                           HorizontalOptions="StartAndExpand"/>
+                    <!--Value-->
+                    <ContentPresenter Grid.Column="1"
+                                      Grid.Row="1"
+                                      Margin="16,0,0,0"
+                                      HorizontalOptions="StartAndExpand"/>
+                </Grid>
+
+            </Frame>
+
+        </ControlTemplate>
+    </ContentView.ControlTemplate>
+
+</ContentView>

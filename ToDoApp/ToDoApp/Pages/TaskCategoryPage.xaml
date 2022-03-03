@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             NavigationPage.HasNavigationBar="false"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="true"
+             xmlns:controls="clr-namespace:ToDoApp.Controls"
+             xmlns:fragments="clr-namespace:ToDoApp.Pages.Fragments" 
+             x:Class="ToDoApp.Pages.TaskCategoryPage">
+    
+    <ContentPage.Content>
+
+        <Grid RowDefinitions="60,*,Auto"
+              RowSpacing="0"
+              VerticalOptions="FillAndExpand"
+              HorizontalOptions="FillAndExpand">
+
+            <!--#region Custom navigation bar-->
+            <controls:CustomNavigationBar Grid.Row="0"
+                                          Margin="0,0,0,16"
+                                          Title="{xct:Translate NavigationBarHeader_TaskCategoryPage}"
+                                          NavigateBackCommand="{Binding NavigateBackCommand}"/>
+            <!--#endregion-->
+
+            <StackLayout Grid.Row="1"
+                         xct:StateLayout.CurrentState="{Binding MainState}"
+                         xct:StateLayout.AnimateStateChanges="True">
+
+                <xct:StateLayout.StateViews>
+                    <xct:StateView  StateKey="Loading"
+                                    VerticalOptions="FillAndExpand">
+                        <fragments:LoadingView></fragments:LoadingView>
+                    </xct:StateView>
+                </xct:StateLayout.StateViews>
+
+                <!--Category name-->
+                <StackLayout Style="{StaticResource EntryDataStackLayoutStyle}">
+                    <Label Text="{xct:Translate Name}"
+                           Style="{StaticResource EntryHeaderLabelStyle}"/>
+                    <Frame x:Name="NameFrame"
+                           Style="{StaticResource FrameEntryStyle}">
+                        <Entry Placeholder="{xct:Translate EnterCategoryName}"
+                               Text="{Binding Name.Value}"
+                               Style="{StaticResource BaseEntryStyle}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <VisualState.StateTriggers>
+                                        </VisualState.StateTriggers>
+                                    </VisualState>
+                                    <VisualState x:Name="Focused">
+                                        <VisualState.Setters>
+                                            <Setter TargetName="NameFrame" Property="Frame.BorderColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryColor}, Dark={StaticResource ButtonTextColor}}" />
+                                            <Setter TargetName="NameFrame" Property="Frame.CornerRadius" Value="0" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Entry.Effects>
+                                <xct:RemoveBorderEffect/>
+                            </Entry.Effects>
+                        </Entry>
+                    </Frame>
+                    <Label IsVisible="{Binding Name.IsValid, Converter={xct:InvertedBoolConverter}}"
+                           Text="{Binding Name.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                           TextColor="{StaticResource FailColor}" />
+                </StackLayout>
+                
+                <!--Category color-->
+                <StackLayout Style="{StaticResource EntryDataStackLayoutStyle}">
+                    <Label Text="{xct:Translate SelectColor}"
+                           Style="{StaticResource EntryHeaderLabelStyle}"/>
+
+                    <CollectionView ItemsSource="{Binding ColorList}"
+                                    SelectedItem="{Binding SelectedColor, Mode=TwoWay}"
+                                    SelectionMode="Single"
+                                    HeightRequest="45">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Horizontal" ItemSpacing="6"/>
+                        </CollectionView.ItemsLayout>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BackgroundColor="{Binding .}" 
+                                       xct:TouchEffect.NativeAnimation="True"
+                                       xct:CornerRadiusEffect.CornerRadius="8"
+                                       WidthRequest="45">
+                                
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup Name="CommonStates">
+                                            <VisualState Name="Selected">
+                                                <VisualState.Setters>
+                                                    <Setter Property="BackgroundColor" Value="{Binding .}" />
+                                                    <Setter Property="BorderColor" Value="Black" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState Name="Normal">
+                                                <VisualState.Setters>
+                                                    <Setter Property="BackgroundColor" Value="{Binding .}" />
+                                                    <Setter Property="BorderColor" Value="White" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
+
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                </StackLayout>
+                
+            </StackLayout>
+
+            <!--Add/Save button-->
+            <Button Grid.Row="2"
+                    Text="{xct:Translate Save}"
+                    Command="{Binding CreateCategoryCommand}"
+                    Margin="20, 0, 20, 14"
+                    Style="{StaticResource BaseButtonStyle}"
+                    VerticalOptions="End"
+                    Visual="Material"
+                    xct:ShadowEffect.Color="{AppThemeBinding Light={StaticResource LightPrimaryColor}, Dark={StaticResource DarkButtonBackgroundColor}}"
+                    xct:ShadowEffect.Radius="16"
+                    xct:ShadowEffect.OffsetX="4"
+                    xct:ShadowEffect.OffsetY="8"
+                    xct:TouchEffect.NativeAnimation="True">
+            </Button>            
+        </Grid>
+
+    </ContentPage.Content>
+    
+</ContentPage>

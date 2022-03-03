@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ToDoApp.Pages.Fragments.EmptyTaskListStateView"
+             xmlns:helpers="clr-namespace:ToDoApp.Helpers"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit" 
+             Margin="100,0,100,0"
+             HorizontalOptions="Center"
+             VerticalOptions="Center">
+
+    <Image Source="no_results.png"
+           Aspect="AspectFit"
+           HeightRequest="210"
+           VerticalOptions="Center"/>
+
+    <Label HorizontalTextAlignment="Center"
+           Text="{xct:Translate AllClear}"
+           Margin="0,16,0,0"
+           Style="{StaticResource Headline4_MulishBlack}"></Label>
+    <Label Text="{xct:Translate NoTask}"
+           HorizontalTextAlignment="Center"
+           Style="{StaticResource Body1_MulishRegular}"
+           TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"/>
+</StackLayout>

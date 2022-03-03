@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="ToDoApp.Controls.CalendarCollectionView">
+
+    <ContentView.Content>
+        <CollectionView x:Name="daysList"
+                        ItemsSource="{Binding CalendarItemsList}"
+                        ItemSizingStrategy="MeasureFirstItem"
+                        BackgroundColor="Transparent"
+                        HeightRequest="56"
+                        SelectedItem="{Binding SelectedCalendarItem, Mode=TwoWay}"
+                        SelectionMode="Single">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="6" Orientation="Horizontal" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+
+                    <Frame Padding="8"
+                           WidthRequest="40"
+                           Margin="0,0,0,6">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup>
+                                <VisualState x:Name="active">
+                                    <VisualState.StateTriggers>
+                                        <StateTrigger IsActive="{Binding IsSelected}"/>
+                                    </VisualState.StateTriggers>
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="{StaticResource LightPrimaryColor}"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="normal">
+                                    <VisualState.StateTriggers>
+                                        <StateTrigger IsActive="{Binding IsSelected, Converter={xct:InvertedBoolConverter}}"/>
+                                    </VisualState.StateTriggers>
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkCalendarInactiveItemBackgroundColor}}"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+
+                                <VisualState Name="Selected">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="{StaticResource LightPrimaryColor}"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                        <Grid HorizontalOptions="Center"
+                              RowSpacing="0"
+                              RowDefinitions="Auto,Auto"
+                              VerticalOptions="CenterAndExpand">
+
+                            <!--Day of week-->
+                            <Label Grid.Row="1"
+                                   Grid.Column="0"
+                                   FontFamily="OpenSansSemiBold"
+                                   FontSize="12"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center"
+                                   Text="{Binding DayOfWeek}">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup>
+                                        <VisualState x:Name="active">
+                                            <VisualState.StateTriggers>
+                                                <StateTrigger IsActive="{Binding IsSelected}"/>
+                                            </VisualState.StateTriggers>
+                                            <VisualState.Setters>
+                                                <Setter Property="TextColor" Value="{StaticResource CalendarActiveItemTextColor}"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="normal">
+                                            <VisualState.StateTriggers>
+                                                <StateTrigger IsActive="{Binding IsSelected, Converter={xct:InvertedBoolConverter}}"/>
+                                            </VisualState.StateTriggers>
+                                            <VisualState.Setters>
+                                                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource DarkPageBackgroundColor}, Dark={StaticResource LightPageBackgroundColor}}"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                            </Label>
+
+                            <!--Day-->
+                            <Label Grid.Row="2"
+                                   Grid.Column="0"
+                                   FontFamily="OpenSansSemiBold"
+                                   FontSize="18"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center"
+                                   Text="{Binding Day}">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup>
+                                        <VisualState x:Name="active">
+                                            <VisualState.StateTriggers>
+                                                <StateTrigger IsActive="{Binding IsSelected}"/>
+                                            </VisualState.StateTriggers>
+                                            <VisualState.Setters>
+                                                <Setter Property="TextColor" Value="{StaticResource CalendarActiveItemTextColor}"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="normal">
+                                            <VisualState.StateTriggers>
+                                                <StateTrigger IsActive="{Binding IsSelected, Converter={xct:InvertedBoolConverter}}"/>
+                                            </VisualState.StateTriggers>
+                                            <VisualState.Setters>
+                                                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource DarkPageBackgroundColor}, Dark={StaticResource LightPageBackgroundColor}}"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                            </Label>
+
+                        </Grid>
+                    </Frame>
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+    </ContentView.Content>
+</ContentView>
