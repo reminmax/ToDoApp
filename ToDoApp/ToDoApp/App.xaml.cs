@@ -71,10 +71,10 @@ namespace ToDoApp
         /// </summary>
         protected override void OnStart()
         {
-            // TODO: удалить коды
+            // TODO: add you MS App Center secrets below
             // MS App Center initialization
-            AppCenter.Start("android=aa1b4837-115d-4257-9049-cd9b98fcb962;" +
-                            "ios=602cbc76-67f3-43a1-a66c-8727ea00f549;",
+            AppCenter.Start("android={Your app secret here}" +
+                            "ios={Your app secret here}",
                 typeof(Analytics), typeof(Crashes));
         }
 

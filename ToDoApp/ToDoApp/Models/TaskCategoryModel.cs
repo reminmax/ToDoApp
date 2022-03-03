@@ -6,9 +6,7 @@ namespace ToDoApp.Models
     public class TaskCategoryModel
     {
         [Ignored]
-        //public static string CollectionPath = "categoryCollection";
-        //TODO
-        public static string CollectionPath = "categories";
+        public static string CollectionPath = "categoryCollection";
 
         public TaskCategoryModel()
         {
