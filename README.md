@@ -21,17 +21,40 @@
 * [Plugin.FirebaseAuth](https://github.com/f-miyu/Plugin.FirebaseAuth)
 
 ## Screenshots
-<img src="https://github.com/reminmax/ToDoApp/blob/master/Screenshots/Screenshot_20220303-181216.png?raw=true" Width="240" />
-<img src="https://github.com/reminmax/ToDoApp/blob/master/Screenshots/Screenshot_20220303-181228.png?raw=true" Width="240" />
-<img src="https://github.com/reminmax/ToDoApp/blob/master/Screenshots/Screenshot_20220303-181239.png?raw=true" Width="240" />
-<img src="https://github.com/reminmax/ToDoApp/blob/master/Screenshots/Screenshot_20220303-181438.png?raw=true" Width="240" />
-<img src="https://github.com/reminmax/ToDoApp/blob/master/Screenshots/Screenshot_20220303-181511.png?raw=true" Width="240" />
-<img src="https://github.com/reminmax/ToDoApp/blob/master/Screenshots/Screenshot_20220303-181618.png?raw=true" Width="240" />
-<img src="https://github.com/reminmax/ToDoApp/blob/master/Screenshots/Screenshot_20220303-183552.png?raw=true" Width="240" />
-<img src="https://github.com/reminmax/ToDoApp/blob/master/Screenshots/Screenshot_20220303-183710.png?raw=true" Width="240" />
-<img src="https://github.com/reminmax/ToDoApp/blob/master/Screenshots/Screenshot_20220303-193326.png?raw=true" Width="240" />
-<img src="https://github.com/reminmax/ToDoApp/blob/master/Screenshots/Screenshot_20220303-193357.png?raw=true" Width="240" />
-<img src="https://github.com/reminmax/ToDoApp/blob/master/Screenshots/Screenshot_20220303-193408.png?raw=true" Width="240" />
-<img src="https://github.com/reminmax/ToDoApp/blob/master/Screenshots/Screenshot_20220303-193422.png?raw=true" Width="240" />
-<img src="https://github.com/reminmax/ToDoApp/blob/master/Screenshots/Screenshot_20220303-193433.png?raw=true" Width="240" />
-<img src="https://github.com/reminmax/ToDoApp/blob/master/Screenshots/Screenshot_20220303-193452.png?raw=true" Width="240" />
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-style:none;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-style:none;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0lax"><img src="https://github.com/reminmax/ToDoApp/blob/master/Screenshots/Screenshot_20220303-181216.png?raw=true" Width="240" /></th>
+    <th class="tg-0lax"><img src="https://github.com/reminmax/ToDoApp/blob/master/Screenshots/Screenshot_20220303-181228.png?raw=true" Width="240" /></th>
+    <th class="tg-0lax"><img src="https://github.com/reminmax/ToDoApp/blob/master/Screenshots/Screenshot_20220303-181239.png?raw=true" Width="240" /></th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0lax"><img src="https://github.com/reminmax/ToDoApp/blob/master/Screenshots/Screenshot_20220303-181438.png?raw=true" Width="240" /></td>
+    <td class="tg-0lax"><img src="https://github.com/reminmax/ToDoApp/blob/master/Screenshots/Screenshot_20220303-181438.png?raw=true" Width="240" /></td>
+    <td class="tg-0lax"><img src="https://github.com/reminmax/ToDoApp/blob/master/Screenshots/Screenshot_20220303-181511.png?raw=true" Width="240" /></td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"><img src="https://github.com/reminmax/ToDoApp/blob/master/Screenshots/Screenshot_20220303-181618.png?raw=true" Width="240" /></td>
+    <td class="tg-0lax"><img src="https://github.com/reminmax/ToDoApp/blob/master/Screenshots/Screenshot_20220303-183552.png?raw=true" Width="240" /></td>
+    <td class="tg-0lax"><img src="https://github.com/reminmax/ToDoApp/blob/master/Screenshots/Screenshot_20220303-183710.png?raw=true" Width="240" /></td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"><img src="https://github.com/reminmax/ToDoApp/blob/master/Screenshots/Screenshot_20220303-193326.png?raw=true" Width="240" /></td>
+    <td class="tg-0lax"><img src="https://github.com/reminmax/ToDoApp/blob/master/Screenshots/Screenshot_20220303-193357.png?raw=true" Width="240" /></td>
+    <td class="tg-0lax"><img src="https://github.com/reminmax/ToDoApp/blob/master/Screenshots/Screenshot_20220303-193408.png?raw=true" Width="240" /></td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"><img src="https://github.com/reminmax/ToDoApp/blob/master/Screenshots/Screenshot_20220303-193422.png?raw=true" Width="240" /></td>
+    <td class="tg-0lax"><img src="https://github.com/reminmax/ToDoApp/blob/master/Screenshots/Screenshot_20220303-193433.png?raw=true" Width="240" /></td>
+    <td class="tg-0lax"><img src="https://github.com/reminmax/ToDoApp/blob/master/Screenshots/Screenshot_20220303-193452.png?raw=true" Width="240" /></td>
+  </tr>
+</tbody>
+</table>
