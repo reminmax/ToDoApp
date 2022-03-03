@@ -21,13 +21,7 @@
 * [Plugin.FirebaseAuth](https://github.com/f-miyu/Plugin.FirebaseAuth)
 
 ## Screenshots
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-style:none;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-style:none;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-0lax{text-align:left;vertical-align:top}
-</style>
-<table class="tg">
+<table>
 <thead>
   <tr>
     <th class="tg-0lax"><img src="https://github.com/reminmax/ToDoApp/blob/master/Screenshots/Screenshot_20220303-181216.png?raw=true" Width="240" /></th>
