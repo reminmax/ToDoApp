@@ -14,7 +14,6 @@
 * [Xamarin.CommunityToolkit](https://docs.microsoft.com/en-us/xamarin/community-toolkit/)
 * [FreshMVVM](https://github.com/rid00z/FreshMvvm)
 * [Fody.PropertyChanged](https://github.com/Fody/PropertyChanged)
-* [Polly](https://github.com/App-vNext/Polly)
 * [Plugin.CloudFirestore](https://github.com/f-miyu/Plugin.CloudFirestore)
 * [Microsoft.AppCenter.Analytics](https://www.nuget.org/packages/Microsoft.AppCenter.Analytics/)
 * [Microsoft.AppCenter.Crashes](https://www.nuget.org/packages/Microsoft.AppCenter.Crashes/)
